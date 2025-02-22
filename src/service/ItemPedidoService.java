@@ -11,6 +11,7 @@ public class ItemPedidoService {
     Scanner sc = new Scanner(System.in);
 
     public ItemPedido criarItemPedido(List<Produto> produtos) {
+        System.out.println("Produtos disponiveis:");
         for (Produto produto: produtos){
             System.out.println("ID: " + produto.getId() + " | Nome: " + produto.getNome() +
                     " | Preço " + produto.getPreco() + " | Quantidade:" + produto.getQuantidade());

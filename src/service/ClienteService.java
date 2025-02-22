@@ -31,4 +31,18 @@ public class ClienteService {
 
     }
 
+    public List<Cliente> listarClientes() {
+        if (clientes.isEmpty()){
+            System.out.printf("Nenhum cliente cadastrado!\n");
+        }else {
+            for (Cliente cliente : clientes) {
+                System.out.println("Nome: " + cliente.getNome() +
+                        " |CPF: " + cliente.getCpf() +
+                        " |email: " + cliente.getEmail() +
+                        " |telefone: " + cliente.getTelefone());
+            }
+            System.out.println("********************************");
+        }
+        return clientes;
+    }
 }

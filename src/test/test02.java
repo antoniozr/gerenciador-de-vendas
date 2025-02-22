@@ -24,21 +24,26 @@ public class test02 {
 
         while (opcao != 0) {
             System.out.println("*******MENU***********");
-            System.out.println("1 - Cadastrar o usuário");
-            System.out.println("2 - Cadastrar produto");
-            System.out.println("3 - Adicionar item ao pedido");
+            System.out.println("1 - Cadastrar o Cliente");
+            System.out.println("2 - Listar clientes");
+            System.out.println("3 - Cadastrar produto");
+            System.out.println("4 - Adicionar item ao pedido");
             opcao = sc.nextInt();
 
             switch (opcao) {
                 case 1:
-                    System.out.println("*** Cadastrar Usuário ***");
+                    System.out.println("*** Cadastrar Cliente ***");
                     clienteService.cadastrarCliente();
                     break;
                 case 2:
+                    System.out.println("*** Listando Clientes ***");
+                    clienteService.listarClientes();
+                    break;
+                case 3:
                     System.out.println("*** Cadastrar Produto ***");
                     produtoService.cadastrarProduto();
                     break;
-                case 3:
+                case 4:
                     System.out.println("*** Adicionar item ao pedido ***");
                     ItemPedido itemPedido = itemPedidoService.criarItemPedido(produtoService.listarProdutos());
                     break;

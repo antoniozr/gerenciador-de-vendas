@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ClienteService {
     List<Cliente> clientes = new ArrayList<>();
 
-    public void cadastrarCliente(){
+    public void cadastrarCliente() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Digite o seu nome:");
@@ -32,9 +32,9 @@ public class ClienteService {
     }
 
     public List<Cliente> listarClientes() {
-        if (clientes.isEmpty()){
+        if (clientes.isEmpty()) {
             System.out.printf("Nenhum cliente cadastrado!\n");
-        }else {
+        } else {
             for (Cliente cliente : clientes) {
                 System.out.println("Nome: " + cliente.getNome() +
                         " |CPF: " + cliente.getCpf() +
@@ -45,4 +45,35 @@ public class ClienteService {
         }
         return clientes;
     }
+
+    public Cliente buscarClientes() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Para encontrar um cliente digite o seu CPF:");
+        String cpf = sc.nextLine();
+
+        Cliente clienteSelecionado = null;
+
+        for (Cliente cliente : clientes) {
+            if (cpf.equals(cliente.getCpf())) {
+                clienteSelecionado = cliente;
+                break;
+            }
+        }
+
+        if (clienteSelecionado == null) {
+            System.out.println("Cliente não encontrado!");
+            return null;
+        } else {
+            System.out.println("Nome: " + clienteSelecionado.getNome() +
+                    " |CPF: " + clienteSelecionado.getCpf() +
+                    " |email: " + clienteSelecionado.getEmail() +
+                    " |telefone: " + clienteSelecionado.getTelefone());
+            return clienteSelecionado;
+
+        }
+
+    }
+
 }
+

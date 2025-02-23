@@ -26,8 +26,9 @@ public class test02 {
             System.out.println("*******MENU***********");
             System.out.println("1 - Cadastrar o Cliente");
             System.out.println("2 - Listar clientes");
-            System.out.println("3 - Cadastrar produto");
-            System.out.println("4 - Adicionar item ao pedido");
+            System.out.println("3 - Buscar cliente pelo CPF");
+            System.out.println("4 - Cadastrar produto");
+            System.out.println("5 - Adicionar item ao pedido");
             opcao = sc.nextInt();
 
             switch (opcao) {
@@ -40,10 +41,14 @@ public class test02 {
                     clienteService.listarClientes();
                     break;
                 case 3:
+                    System.out.println("*** Buscando clientes por CPF ***");
+                    clienteService.buscarClientes();
+                    break;
+                case 4:
                     System.out.println("*** Cadastrar Produto ***");
                     produtoService.cadastrarProduto();
                     break;
-                case 4:
+                case 5:
                     System.out.println("*** Adicionar item ao pedido ***");
                     ItemPedido itemPedido = itemPedidoService.criarItemPedido(produtoService.listarProdutos());
                     break;

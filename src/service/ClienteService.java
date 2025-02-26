@@ -8,9 +8,14 @@ import java.util.Scanner;
 
 public class ClienteService {
     List<Cliente> clientes = new ArrayList<>();
+    Scanner sc;
+
+    public ClienteService(Scanner sc) {
+        this.sc = sc;
+    }
 
     public void cadastrarCliente() {
-        Scanner sc = new Scanner(System.in);
+
 
         System.out.println("Digite o seu nome:");
         String nome = sc.nextLine();
@@ -46,8 +51,8 @@ public class ClienteService {
         return clientes;
     }
 
-    public Cliente buscarClientes() {
-        Scanner sc = new Scanner(System.in);
+    public Cliente buscarCliente() {
+
 
         System.out.println("Para encontrar um cliente digite o seu CPF:");
         String cpf = sc.nextLine();

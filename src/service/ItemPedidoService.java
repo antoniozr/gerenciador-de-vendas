@@ -9,13 +9,21 @@ import java.util.Scanner;
 
 public class ItemPedidoService {
     Scanner sc = new Scanner(System.in);
+    ProdutoService produtoService;
 
-    public ItemPedido criarItemPedido(List<Produto> produtos) {
+    public ItemPedidoService(ProdutoService produtoService) {
+        this.produtoService = produtoService;
+    }
+
+    public ItemPedido criarItemPedido(ProdutoService produtoService) {
+
         System.out.println("Produtos disponiveis:");
-        for (Produto produto: produtos){
-            System.out.println("ID: " + produto.getId() + " | Nome: " + produto.getNome() +
-                    " | Preço " + produto.getPreco() + " | Quantidade:" + produto.getQuantidade());
+        List<Produto> produtos = produtoService.listarProdutos();
+        if (produtos.isEmpty()) {
+            System.out.println("Nenhum produto disponivel para selecão ");
+            return null;
         }
+
         System.out.println("Digite o ID do produto: ");
         int idProduto = sc.nextInt();
 

@@ -1,5 +1,6 @@
 package service;
 
+import model.Cliente;
 import model.Produto;
 
 import java.util.ArrayList;
@@ -8,9 +9,13 @@ import java.util.Scanner;
 
 public class ProdutoService {
     List<Produto> produtos = new ArrayList<>();
+    Scanner sc;
+
+    public ProdutoService(Scanner sc) {
+        this.sc = sc;
+    }
 
     public void cadastrarProduto(){
-        Scanner sc = new Scanner(System.in);
 
         System.out.println("Digite o ID do produto:");
         int id = sc.nextInt();
@@ -34,6 +39,17 @@ public class ProdutoService {
     }
 
     public List<Produto> listarProdutos() {
+        if (produtos.isEmpty()) {
+            System.out.printf("Nenhum cliente cadastrado!\n");
+        } else {
+            for (Produto produto : produtos) {
+                System.out.println("ID: " + produto.getId() +
+                        "| Nome: " + produto.getNome() +
+                        "| Preço: " + produto.getPreco() +
+                        "| Quantidade: " + produto.getQuantidade());
+            }
+            System.out.println("********************************");
+        }
         return produtos;
     }
 

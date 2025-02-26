@@ -44,8 +44,7 @@ public class PedidoService {
             itens.add(item);
         }
         if (itens.isEmpty()){
-            System.out.println("Pedido não pode ser criado sem itens");
-            return;
+            
         }
 
         Pedido pedido = new Pedido(cliente, itens);

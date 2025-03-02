@@ -40,7 +40,7 @@ public class ProdutoService {
 
     public List<Produto> listarProdutos() {
         if (produtos.isEmpty()) {
-            System.out.printf("Nenhum cliente cadastrado!\n");
+            System.out.printf("Nenhum produto cadastrado!\n");
         } else {
             for (Produto produto : produtos) {
                 System.out.println("ID: " + produto.getId() +
@@ -53,4 +53,43 @@ public class ProdutoService {
         return produtos;
     }
 
+    public void atualizarProduto() {
+        System.out.println("Esses são os produtos cadastrados!");
+        List<Produto> produtos = listarProdutos();
+        System.out.println("Selecione um produto digitando o seu ID:");
+        int idProduto = sc.nextInt();
+
+        Produto produtoEncontrado = null;
+        for (Produto produto: produtos){
+            if (idProduto == produto.getId()){
+                produtoEncontrado = produto;
+                break;
+            }
+        }
+
+        if (produtoEncontrado != null){
+            System.out.println("Produto: " + produtoEncontrado.getNome() +
+                    " | Estoque " + produtoEncontrado.getQuantidade() +
+                    " | Preço: " + produtoEncontrado.getPreco() );
+
+            System.out.println("Digite o novo preço:");
+            double preco = sc.nextDouble();
+
+            System.out.println("Digite a nova quantidade:");
+            int quantidade = sc.nextInt();
+            sc.nextLine();
+
+            produtoEncontrado.setPreco(preco);
+            produtoEncontrado.setQuantidade(quantidade);
+
+            System.out.println("Produto tualizado com sucesso!");
+
+            System.out.println("Estado atual do produto");
+            System.out.println("Produto: " + produtoEncontrado.getNome() +
+                    " | Estoque " + produtoEncontrado.getQuantidade() +
+                    " | Preço: " + produtoEncontrado.getPreco() );
+        } else {
+            System.out.println("Produto não encontrado!");
+        }
+    }
 }

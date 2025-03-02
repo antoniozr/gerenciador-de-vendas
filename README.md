@@ -12,5 +12,6 @@ Este é um projeto simples em Java que simula um sistema de gerenciamento de ven
 - **Menu Produto:** Oferece opções relacionadas aos produtos.
     - **Cadastrar Produto:** Adiciona um novo produto ao sistema.
     - **Listar Produtos:** Exibe uma lista com todos os produtos cadastrados.
+    - **Atualizar preço e estoque":** Atualiza o preço e o estoque"
 - **Menu Pedido:** Oferece opções relacionadas aos pedidos.
     - **Criar Pedido:** Permite criar um novo pedido com cliente e itens.

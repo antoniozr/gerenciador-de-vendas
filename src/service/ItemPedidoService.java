@@ -43,6 +43,7 @@ public class ItemPedidoService {
 
         System.out.println("Digite a quantidade desejada: ");
         int quantidade = sc.nextInt();
+        sc.nextLine();
 
         if (quantidade <= produtoSelecionado.getQuantidade()) {
             produtoSelecionado.setQuantidade(produtoSelecionado.getQuantidade() - quantidade);

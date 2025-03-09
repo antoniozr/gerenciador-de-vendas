@@ -28,26 +28,40 @@ public class PedidoService {
         clienteService.listarClientes();
 
         Cliente cliente = clienteService.buscarCliente();
-        while (cliente == null){
-            System.out.println("Tente novamente.");
-            cliente = clienteService.buscarCliente();
+        if (cliente == null){
+            System.out.println("Não é possilvel criar um pedido sem um cliente");
+            return;
         }
-        System.out.println("Cliente encontrado com sucesso!");
 
         List<ItemPedido> itens = new ArrayList<>();
 
-        System.out.println("Selecione o produto!");
+        String resposta = "s";
+        while (resposta.equals("s")) {
+            System.out.println("Selecione o produto!");
+            ItemPedido item = itemPedidoService.criarItemPedido(produtoService);
 
-        ItemPedido item = itemPedidoService.criarItemPedido(produtoService);
+            if (item != null) {
+                itens.add(item);
+            }
 
-        if (item != null){
-            itens.add(item);
+            System.out.println("Produtos adicionados até agora:");
+            for (ItemPedido itemPedido: itens){
+                System.out.println("ID: " + itemPedido.getProduto().getId() + " | Nome: " + itemPedido.getProduto().getNome() + " | Quantidade: "
+                        + itemPedido.getQuantidade());
+            }
+            System.out.println("Adicionar outro produto? (s/n)");
+            resposta = sc.nextLine().toLowerCase();
         }
-        if (itens.isEmpty()){
-            
-        }
 
-        Pedido pedido = new Pedido(cliente, itens);
+        // Calcula o valor tatal do pedido
+        double totalPedido = 0;
+        for (ItemPedido itemPedido: itens){
+            totalPedido += (itemPedido.getProduto().getPreco()) * itemPedido.getQuantidade();
+        }
+        System.out.println("Valor total do pedido: " + totalPedido);
+
+        // Cria o pedido
+        Pedido pedido = new Pedido(cliente, itens, totalPedido);
         pedidos.add(pedido);
         System.out.println("Pedido criado com sucesso!");
     }

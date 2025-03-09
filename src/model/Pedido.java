@@ -6,28 +6,36 @@ import java.util.List;
 public class Pedido {
     private Cliente cliente;
     private List<ItemPedido> itens = new ArrayList<>();
+    private double total;
 
 
-    public Pedido(Cliente cliente, List<ItemPedido> itens) {
+    public Pedido(Cliente cliente, List<ItemPedido> itens, double totalPedido) {
         this.cliente = cliente;
+        this.itens = itens;
+        this.total = totalPedido;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens) {
         this.itens = itens;
     }
 
-    public void adicionarItem(ItemPedido item) {
-        itens.add(item);
-    }
-
-    public double resumoCompra() {
-        double total = 0;
-        System.out.println("Cliente: " + this.cliente.getNome());
-        for (ItemPedido itemPedido : itens) {
-            total += itemPedido.calcularSubTotal();
-            System.out.println("Produto: " + itemPedido.getProduto().getNome() +
-                    " - Qtd: " + itemPedido.getProduto().getQuantidade() +
-                    " Subtotal: " + itemPedido.calcularSubTotal());
-        }
-        System.out.println("Valor total: " + total);
+    public double getTotal() {
         return total;
     }
 
+    public void setTotal(double total) {
+        this.total = total;
+    }
 }

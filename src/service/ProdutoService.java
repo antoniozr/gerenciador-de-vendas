@@ -43,10 +43,7 @@ public class ProdutoService {
             System.out.printf("Nenhum produto cadastrado!\n");
         } else {
             for (Produto produto : produtos) {
-                System.out.println("ID: " + produto.getId() +
-                        "| Nome: " + produto.getNome() +
-                        "| Preço: " + produto.getPreco() +
-                        "| Quantidade: " + produto.getQuantidade());
+                System.out.println(produto.toString());
             }
             System.out.println("********************************");
         }

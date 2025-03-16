@@ -28,4 +28,10 @@ public class ItemPedido {
     public double calcularSubTotal() {
         return produto.getPreco() * quantidade;
     }
+
+    @Override
+    public String toString() {
+        return "Produto: " + produto.getNome() +
+                "| Quantidade=" + quantidade;
+    }
 }

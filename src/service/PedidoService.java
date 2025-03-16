@@ -18,7 +18,7 @@ public class PedidoService {
     public PedidoService(ClienteService clienteService, ProdutoService produtoService, Scanner sc) {
         this.clienteService = clienteService;
         this.produtoService = produtoService;
-        this.itemPedidoService = new ItemPedidoService(produtoService);
+        this.itemPedidoService = new ItemPedidoService(sc, produtoService);
         this.sc = sc;
     }
 
@@ -28,7 +28,7 @@ public class PedidoService {
         clienteService.listarClientes();
 
         Cliente cliente = clienteService.buscarCliente();
-        if (cliente == null){
+        if (cliente == null) {
             System.out.println("Não é possilvel criar um pedido sem um cliente");
             return;
         }
@@ -45,7 +45,7 @@ public class PedidoService {
             }
 
             System.out.println("Produtos adicionados até agora:");
-            for (ItemPedido itemPedido: itens){
+            for (ItemPedido itemPedido : itens) {
                 System.out.println("ID: " + itemPedido.getProduto().getId() + " | Nome: " + itemPedido.getProduto().getNome() + " | Quantidade: "
                         + itemPedido.getQuantidade());
             }
@@ -55,15 +55,29 @@ public class PedidoService {
 
         // Calcula o valor tatal do pedido
         double totalPedido = 0;
-        for (ItemPedido itemPedido: itens){
+        for (ItemPedido itemPedido : itens) {
             totalPedido += (itemPedido.getProduto().getPreco()) * itemPedido.getQuantidade();
         }
+        int idPedido = pedidos.size() + 1;
         System.out.println("Valor total do pedido: " + totalPedido);
 
         // Cria o pedido
-        Pedido pedido = new Pedido(cliente, itens, totalPedido);
+        Pedido pedido = new Pedido(idPedido, cliente, itens, totalPedido);
         pedidos.add(pedido);
         System.out.println("Pedido criado com sucesso!");
     }
+
+    public List<Pedido> listarPedidos() {
+        if (pedidos.isEmpty()) {
+            System.out.println("Nenhum pedido encontrado!");
+        } else {
+            for (Pedido pedido : pedidos) {
+                System.out.println(pedido.toString());
+            }
+            System.out.println("____________________________________");
+        }
+        return pedidos;
+    }
+
 
 }

@@ -4,15 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
+    private int id;
     private Cliente cliente;
     private List<ItemPedido> itens = new ArrayList<>();
     private double total;
 
 
-    public Pedido(Cliente cliente, List<ItemPedido> itens, double totalPedido) {
+    public Pedido(int id , Cliente cliente, List<ItemPedido> itens, double totalPedido) {
+        this.id = id;
         this.cliente = cliente;
         this.itens = itens;
         this.total = totalPedido;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Cliente getCliente() {
@@ -37,5 +47,13 @@ public class Pedido {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id +
+                " |Cliente: " + cliente.getNome() +
+                " |Itens: " + itens +
+                " |Total:" + total;
     }
 }

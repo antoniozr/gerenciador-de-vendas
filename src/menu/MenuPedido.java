@@ -19,7 +19,8 @@ public class MenuPedido {
         int opcao = -1;
 
         while (opcao != 0) {
-            System.out.println("1 - CriarPedido");
+            System.out.println("1 - Criar pedido");
+            System.out.println("2 - Listar pedidos");
             System.out.println("0 - Sair");
             opcao = sc.nextInt();
             sc.nextLine();
@@ -30,9 +31,15 @@ public class MenuPedido {
                     System.out.println("*** CriarPedido ***");
                     pedidoService.criarPedido();
                     break;
+                case 2:
+                    System.out.println("*** Listando pedidos ***");
+                    pedidoService.listarPedidos();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
+                default:
+                    System.out.println("Opção invalida");
             }
         }
 

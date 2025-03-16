@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ItemPedidoService {
-    Scanner sc = new Scanner(System.in);
+    Scanner sc;
     ProdutoService produtoService;
 
-    public ItemPedidoService(ProdutoService produtoService) {
+    public ItemPedidoService(Scanner sc, ProdutoService produtoService) {
+        this.sc = sc;
         this.produtoService = produtoService;
     }
 

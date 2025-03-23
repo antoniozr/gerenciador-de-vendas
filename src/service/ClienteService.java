@@ -1,5 +1,9 @@
 package service;
 
+import Exceptions.InvalidCpfException;
+import Exceptions.InvalidEmailException;
+import Exceptions.InvalidNomeException;
+import Exceptions.InvalidTelefoneException;
 import model.Cliente;
 
 import java.util.ArrayList;
@@ -16,18 +20,60 @@ public class ClienteService {
 
     public void cadastrarCliente() {
 
+        String nome = "";
+        while (true) {
+            try {
+                System.out.println("Digite o seu nome:");
+                nome = sc.nextLine();
+                if (nome.length() < 10) {
+                    throw new InvalidNomeException("O nome deve possuir no mínimo 10 caracteres");
+                }
+                break;
+            } catch (InvalidNomeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.println("Digite o seu nome:");
-        String nome = sc.nextLine();
+        String cpf = "";
+        while (true) {
+            try {
+                System.out.println("Digite o seu CPF:");
+                cpf = sc.nextLine();
+                if (!cpf.matches("\\d{11}")) {
+                    throw new InvalidCpfException("O CPF deve ter 11 dígitos");
+                }
+                break;
+            }catch (InvalidCpfException e){
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.println("Digite o seu CPF:");
-        String cpf = sc.nextLine();
+        String email = "";
+        while (true) {
+            try {
+                System.out.println("Digite o email:");
+                email = sc.nextLine();
+                if (!email.contains("@")) {
+                    throw new InvalidEmailException("O email deve conter '@'");
+                }
+                break;
+            }catch (InvalidEmailException e){
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.println("Digite o email:");
-        String email = sc.nextLine();
-
-        System.out.println("Digite o seu telefone:");
-        String telefone = sc.nextLine();
+        String telefone = "";
+        while (true) {
+            try {
+            System.out.println("Digite o seu telefone:");
+            telefone = sc.nextLine();
+            if (telefone.length() < 8) {
+                throw new InvalidTelefoneException("O telefone deve conter no mínimo 8 dígitos");
+            }
+            break;
+        } catch (InvalidTelefoneException e){
+                System.out.println(e.getMessage());}
+        }
 
         Cliente cliente = new Cliente(nome, cpf, email, telefone);
 

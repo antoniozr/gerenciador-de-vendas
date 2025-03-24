@@ -113,10 +113,7 @@ public class ClienteService {
             System.out.println("Cliente não encontrado!");
             return null;
         } else {
-            System.out.println("Nome: " + clienteSelecionado.getNome() +
-                    " |CPF: " + clienteSelecionado.getCpf() +
-                    " |email: " + clienteSelecionado.getEmail() +
-                    " |telefone: " + clienteSelecionado.getTelefone());
+            System.out.println(clienteSelecionado.toString());
             return clienteSelecionado;
 
         }
